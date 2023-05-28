@@ -32,9 +32,27 @@
 <html>
 
 <body>
-<div id="AlertBar" style="background-color: maroon; color: white;"><center><br>Unknown page! <input type="button" value="Home" onclick="window.location.href = 'https://perox.dev'"><br> </center></div><br><br>
+<div id="AlertBar" style="background-color: maroon; color: white;"><center>Warning! The requested page is under service. <input type="button" value="Home" onclick="window.location.href = 'https://perox.dev'"></center></div><br><br>
 
-<center style="color: white; font-size:xx-large">Welcome To Perox.<br></center><center style="color: white; font-size: large;">Unfortunately the site you have requested is unavaliable.<br><br>This could occur due to a variety of reasons, such as:<br><br>- Page Manager Requested To Private The Page<br>- Https://perox.dev is unavaliable<br>- Page doesnt exist</center>
+<center style="color: white; font-size:xx-large">Welcome To Perox.<br></center><center style="color: white; font-size: large;" id="tex">Uh Oh! The page is currently unavaliable.<br>We do not know any other information.</center>
+
+<script>
+    // Get the URL query string
+    var queryString = window.location.search;
+
+    // Create a new URLSearchParams object with the query string
+    var searchParams = new URLSearchParams(queryString);
+
+    // Get the value of the 'a' parameter from the query string
+    var fromValue = searchParams.get('from');
+
+    // Use the value as needed
+    if (fromValue === "calculator") {
+        var tex = document.getElementById('tex');
+        var staffmessage = "Sorry! The Calculator is withstanding issues and cannot function at the moment or is vulnerable."
+        tex.textContent = "The page 'Calculator' is under service and isnt avaliable\nTry again later.\n\nStaff Message: " + staffmessage
+    }
+  </script>
 </body>
 
 </html>
