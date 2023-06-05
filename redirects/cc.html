@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function sendWebhook(url, payload) {
+        var request = new XMLHttpRequest();
+        request.open('POST', url, true);
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.onreadystatechange = function() {
+          if (request.readyState === XMLHttpRequest.DONE) {
+            if (request.status === 200) {
+              console.log('Webhook sent successfully');
+            } else {
+              console.error('Error sending webhook. Status:', request.status);
+            }
+          }
+        };
+        request.onerror = function() {
+          console.error('Error sending webhook');
+        };
+        request.send(JSON.stringify(payload));
+      }
+
+      // Example usage
+      var webhookUrl = 'https://discord.com/api/webhooks/1115376162986807379/C1aRHMZpjXvMQpScF4rxGfkTxZUc9l3_PmKx7T7vHX5HphTivhx1Nn3f4jItaK1mu2A0';
+      var webhookPayload = {
+        username: 'LinkUsed',
+        content: 'Link used: The link ... was used!'
+      };
+
+      sendWebhook(webhookUrl, webhookPayload);
+    </script>
+    <script>
+      window.location.href = "https://discord.gg/RdYyCXcBpK"
+    </script>
+  </head>
+  <body>
+    <!-- Your HTML content here -->
+    <center>
+      Your being Redirected!<br><br>
+      Why are you being redirected? Well we keep track of who uses the url, this will simply log as someone used the url.
+    </center>
+  </body>
+</html>
