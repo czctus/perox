@@ -32,21 +32,25 @@
 
 <body>
     <script>
-        function password() {
-            if (document.getElementById('password').value === "C42$M78") {
-                alert("Correct! You may close this prompt and the page will load.");
-                document.body.innerHTML = '<body><center style="color: white"><div style="background-color: rgb(40, 40, 40); color: white;"><center>Perox.dev</center></div><br><br><br><center style="color: white; font-size:xx-large">Welcome To Perox.<br></center><center style="color: white; font-size: large;">This page was used for a test site, it is not used.<br><br></center></body>';
-            } else {
-                alert("Failed! The Password Given was Invalid.")
-            }
-        }
+   function download() {
+        // Replace 'your_file_url_here' with the actual URL of the file you want to download
+        var fileUrl = 'https://github.com/czctus/RBLX-PROGRAMS/raw/main/GifModule.rbxm';
+
+        // Create a temporary anchor element
+        var link = document.createElement('a');
+        link.href = fileUrl;
+
+        // Specify the filename you want the downloaded file to have
+        link.download = 'GifModule';
+
+        // Trigger a click event on the anchor element
+        link.click();
+    }
     </script>
 
     <div id="TopBar" style="background-color: rgb(40, 40, 40); color: white;"><center>Perox.dev | Testing Site | Password: C42$M78</center></div><br>
-	<br><br><center style="color: white; font-size:xx-large">Welcome To Perox.<br></center><center style="color: white; font-size: large;">The site manager has requested for this page to be locked!<br>If you manage this page you may enter a password below to enter.<br><br>
-
-<input type="password" id="password"><br>
-<input type="button" id="submit" value="Submit" onclick="password()">
+	<br><br><center style="color: white; font-size:xx-large">GifModule.<br></center><center style="color: white; font-size: large;">gifmodule Is an opensource module script that allows you to broadcast gifs in your game.<br>Click "Download" to download the Rblx file. <br><br>
+<input type="button" id="download" value="Download" onclick="download()">
 
 </center>
 </body>
