@@ -1,6 +1,6 @@
 {
-    "load": { //The data below is NEEDED since if its moderated it will need to be replaced.
-        "basicEdition": "0000", //Basic Edition, unfinished. Would just show normal features that are TESTED and wont error.
-        "betaEdition": "0000"  //Beta edition, unfinished since no actual ui exists! But it would basically showcase new features.
+    "load": {
+        "basicEdition": "0000",
+        "betaEdition": "0000" 
     }
 }
