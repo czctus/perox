@@ -14,11 +14,11 @@ jobs:
 
     - name: Change Auth Key
       run: |
-        # Generate a new key (replace this with your logic)
-        new_key=$(openssl rand -hex 32)
+        # Generate a new GUID
+        new_key=$(python -c "import uuid; print(str(uuid.uuid4()))")
 
         # Replace the old key in your configuration file
-        sed -i "s/AuthKey\": \".*\"/AuthKey\": \"$new_key\"/" resources/BACSecureTransfer.json
+        sed -i "s/AuthKey\": \".*\"/AuthKey\": \"$new_key\"/" path/to/your/config.json
 
         # Commit and push the changes
         git config user.name "GitHub Actions"
