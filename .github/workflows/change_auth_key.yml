@@ -1,0 +1,28 @@
+name: Change Auth Key
+
+on:
+  schedule:
+    - cron: '*/1 * * * *' # Run every minute
+
+jobs:
+  change-auth-key:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Change Auth Key
+      run: |
+        # Generate a new key (replace this with your logic)
+        new_key=$(openssl rand -hex 32)
+
+        # Replace the old key in your configuration file
+        sed -i "s/AuthKey\": \".*\"/AuthKey\": \"$new_key\"/" resources/BACSecureTransfer.json
+
+        # Commit and push the changes
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add path/to/your/config.json
+        git commit -m "Change Auth Key"
+        git push
