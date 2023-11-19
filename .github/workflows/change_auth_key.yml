@@ -23,6 +23,6 @@ jobs:
         # Commit and push the changes
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
-        git add path/to/your/config.json
+        git add resources/BACSecureTransfer.json
         git commit -m "Change Auth Key"
         git push
