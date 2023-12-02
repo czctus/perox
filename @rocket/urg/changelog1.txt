@@ -1,0 +1,22 @@
+CHANGELOG FOR URG @ 12/1/2023
+
+[+] added a non-ui based hotel room script.
+[+] restocker team
+[+] annoncement board thing
+[+] new gamepass for rich text!!!!!!1!1!
+[+] added a temporary solution to setting the store name which will be replaced later!
+[+] added a penalty for dying [$100]. wont check either so you can go into debt.
+	ABOVE ONLY APPLIES TO HUNGER DEATHS!!!
+[+] added a elevator into the hotel
+[+] deluxe room for hotel
+[+] something.. find it urself!!!!
+[*] changed hotel code, it now removes your room upon leaving 😭😭
+[*] hotel dialog was changed, reminds u to take keys.
+[*] Changed how long the day is.
+[*] Fixed an bug where dialog would continue when you select leave, along with adding break into the loop
+[*] changed how keys behave. you cant drop them and you can get them back via the guy.
+[*] changed how much you get for cleaning
+[*] changed up some code to fix bugs
+[-] removed the room gui due to a bug
+[-] removed tons of trees to increase preformace
+[-] stairs in the hotel [trust, elevator is better]
