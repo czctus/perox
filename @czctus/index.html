@@ -37,15 +37,15 @@
     </style>
 
 <head>
-    <link rel="icon" type="image/x-icon" href="Favicons/favicon.ico">
-    <meta content="Perox" property="og:title" />
-    <meta content="Perox Offical Site" property="og:description" />
-    <meta content="https://perox.dev/" property="og:url" />
-    <meta content="#43B581" data-react-helmet="true" name="theme-color" />
+    <link rel="icon" type="image/x-icon" href="https://cdn.discordapp.com/avatars/441345404483665931/c12e6de95715965f35227b49c52eec59?size=1024">
+    <meta content="Perox" property="og:title" id="MetaTitle"/>
+    <meta content="Perox Offical Site" property="og:description" id="MetaDescription"/>
+    <meta content="https://perox.dev/" property="og:url" id="MetaUrl"/>
+    <meta content="#43B581" data-react-helmet="true" name="theme-color" id="MetaColor"/>
 </head>
 
 <body>
-<div id="#AlertBar" style="background-color: rgb(22, 181, 192); color: white;"><center> Welcome to the Home Page. <br> </center></div><br><br>
+<div id="#AlertBar" style="background-color: rgb(22, 181, 192); color: white;"><center id="AlertBarText"> Welcome to the Home Page. <br> </center></div><br><br>
 
 <center style="color: white; font-size:xx-large" id="Displayname">Placeholder</center> <center style="color: lightblue; font-size: small;" id="Username">(Formerly Rock_et).<br><br></center><br><br>
 <center style="color: wheat;"><img src="https://cdn.discordapp.com/avatars/441345404483665931/c12e6de95715965f35227b49c52eec59?size=1024" alt="Profile Picture" id="ProfilePicture"></center><br>
@@ -76,6 +76,9 @@
     document.getElementById('Displayname').textContent = DisplayName
     document.getElementById('Status').textContent = Status
     document.getElementById('JoinDate').textContent = "Joined On " + JoinDate
-</script>
+    document.getElementById('AlertBarText').textContent = Username + " | Perox"
+    document.getElementById('MetaTitle').content = "A Profile";
+
+    </script>
 
 </html>
