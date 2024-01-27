@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Content</title>
+</head>
+<body>
+
+<script>
+    // Function to get URL parameters
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    // Get the value of the 'string' parameter from the URL
+    var stringValue = getParameterByName('string');
+
+    // Check if the 'string' parameter exists and has a value
+    if (stringValue) {
+        // If it exists, write it to the document
+        document.write('<p>' + stringValue + '</p>');
+    } else {
+        // If it doesn't exist, display a default message
+        document.write('<p>No string parameter found.</p>');
+    }
+</script>
+
+</body>
+</html>
