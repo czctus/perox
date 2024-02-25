@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynamic Content</title>
+    <!-- Include js-cookie library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
 </head>
 <body>
 
@@ -19,27 +21,13 @@
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
 
-    // Function to set a cookie value
-    function setCookie(name, value, days) {
-        var expires = "";
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + value + expires + "; path=/";
+    // Function to get and set cookies
+    function getCookie(name) {
+        return Cookies.get(name);
     }
 
-    // Function to get a cookie value
-    function getCookie(name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-        }
-        return null;
+    function setCookie(name, value) {
+        Cookies.set(name, value);
     }
 
     // Get the value of the 'string' parameter from the URL
@@ -47,18 +35,18 @@
 
     // Check if the 'string' parameter exists and has a value
     if (stringValue) {
-        // If it exists, write it to the document and save to a cookie
+        // If it exists, write it to the document and save it in a cookie
+        setCookie('lastString', stringValue);
         document.write('<p>' + stringValue + '</p>');
-        setCookie('lastString', stringValue, 7); // Save the last string for 7 days
     } else {
-        // If it doesn't exist, try to get the last saved string from the cookie
+        // If it doesn't exist, try to retrieve the last string from the cookie
         var lastString = getCookie('lastString');
         if (lastString) {
-            // If last string found, write it to the document
+            // If found, write it to the document
             document.write('<p>Last string: ' + lastString + '</p>');
         } else {
-            // If no last string found, display a default message
-            document.write('<p>No string parameter found and no last string available.</p>');
+            // If neither exists, display a default message
+            document.write('<p>No string parameter found.</p>');
         }
     }
 </script>
