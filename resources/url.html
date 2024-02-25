@@ -19,16 +19,47 @@
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
 
+    // Function to set a cookie value
+    function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
+    // Function to get a cookie value
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+
     // Get the value of the 'string' parameter from the URL
     var stringValue = getParameterByName('string');
 
     // Check if the 'string' parameter exists and has a value
     if (stringValue) {
-        // If it exists, write it to the document
+        // If it exists, write it to the document and save to a cookie
         document.write('<p>' + stringValue + '</p>');
+        setCookie('lastString', stringValue, 7); // Save the last string for 7 days
     } else {
-        // If it doesn't exist, display a default message
-        document.write('<p>No string parameter found.</p>');
+        // If it doesn't exist, try to get the last saved string from the cookie
+        var lastString = getCookie('lastString');
+        if (lastString) {
+            // If last string found, write it to the document
+            document.write('<p>Last string: ' + lastString + '</p>');
+        } else {
+            // If no last string found, display a default message
+            document.write('<p>No string parameter found and no last string available.</p>');
+        }
     }
 </script>
 
