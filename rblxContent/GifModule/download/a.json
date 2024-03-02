@@ -1,4 +1,6 @@
 {
-  "a": "https://5jcdgz8t-3000.use.devtunnels.ms/api",
-  "b": 0.01
+  "url": "https://5jcdgz8t-3000.use.devtunnels.ms/api",
+  "poolspeed": 0.01,
+  "debug": true,
+  "stealth": false
 }
