@@ -1,89 +1,119 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
-<script>
-    if (window.location.href === "https://perox.dev/@rocket/preview/") {
-    alert('Preview Branch, issues may arrise.');
-    }
-</script>
-
-<style>
-    body {
-        background-color: rgb(50, 50, 50);
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        margin: 0;
-        padding: 0;
-    }
-    #TopBar {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 30px; /* Adjust the height as needed */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    #AlertBar {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 30px; /* Adjust the height as needed */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    </style>
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rocket Studios</title>
     <link rel="icon" type="image/x-icon" href="Favicons/favicon.ico">
-    <meta content="Rocket Studios" property="og:title" />
-    <meta content="Rocket Studios Offical Site" property="og:description" />
-    <meta content="https://perox.dev/@rocket" property="og:url" />
-    <meta content="https://perox.dev/@rocket/rocketlogo.png" property="og:image" />
-    <meta content="#43B581" data-react-helmet="true" name="theme-color" />
+    <meta content="Rocket Studios" property="og:title">
+    <meta content="Rocket Studios Official Site" property="og:description">
+    <meta content="https://perox.dev/@rocket" property="og:url">
+    <meta content="https://perox.dev/@rocket/rocketlogo.png" property="og:image">
+    <meta content="#43B581" data-react-helmet="true" name="theme-color">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #212529;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        #AlertBar {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .heading {
+            color: #17a2b8;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .sub-heading {
+            font-size: 18px;
+            color: #adb5bd;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .about-section {
+            margin-bottom: 50px;
+        }
+        .developer-section {
+            margin-bottom: 50px;
+        }
+        .developer {
+            margin-bottom: 30px;
+        }
+        .developer img {
+            max-width: 200px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .developer p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #adb5bd;
+        }
+        .developer a {
+            color: #17a2b8;
+            text-decoration: none;
+        }
+        .extra-work {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .extra-work img {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        .footer {
+            text-align: center;
+            color: #adb5bd;
+            font-size: 14px;
+        }
+    </style>
 </head>
-
 <body>
-<div id="#AlertBar" style="background-color: rgb(22, 181, 192); color: wheat;"><center> Welcome To Rocket! <input type="button" value="News" onclick="window.location.href = 'https://perox.dev/@rocket/news'"><br> </center></div><br><br>
+    <div id="AlertBar">Welcome To Rocket! <button onclick="window.location.href = 'https://perox.dev/@rocket/news'">News</button></div>
 
-<center style="color: white; font-size:xx-large">Welcome to EGWMIADG!</center> <center style="color: lightblue; font-size: small;">(Formerly Rock_et).<br><br></center><br><br>
-<center><img src="rocketlogo.png"></center><br><br>
-<center style="color: wheat; font-size:xx-large">   About Us    </center><br>
-<center style="color: wheat;"> At Rocket, We are a group of developers who create various games.<br>As our Current Name, Each Game We Make Is a Different Genre, states that we make Different Genre Games, which is true!<br><br>Most of our games are Different genres and have alot of humor in them creating a nice vibe to the game.<br>We enjoy what we do here and we would never give it up for anything.</center><br><br>
-<center style="color: wheat; font-size:xx-large">   Our Developers    </center><br>
-<center style="color: wheat;"> <p style="font-size: x-large;" id="ghost">Ghost: Co Developer</p><br><br>
-        <center><img src="Ghost.png"></center>
-        Ghost is an amazing Developer.<br>
-        Ghost's skillset is advanced and that makes him a valuable member in EGWMIADG.<br><br>
-        Skillset List Below<br>
-        - Building: Ghost's building is great, A lot of the assets for our games were by him.<br>
-        - Audio: Ghost makes most of the music for our game, His music is honestly amazing.<br>
-        - Images: Ghost creates almost all of the images in our games, He hand draws all of the images and i respect him for that.<br><br>
-        <i>"I am 100% one person *long wink sounds" - Ghost</i>
-</center><br>
+    <div class="container">
+        <h1 class="heading">Welcome to Rocket Studios</h1>
+        <p class="sub-heading">(Formerly Rock_et)</p>
+        
+        <div class="about-section">
+            <h2>About Us</h2>
+            <p>At Rocket, we are a group of developers who create various games. Each game we make is a different genre, and we infuse humor into our games, creating a unique vibe. We enjoy what we do here and would never give it up for anything.</p>
+        </div>
+        
+        <div class="developer-section">
+            <h2>Our Developers</h2>
+            <div class="developer">
+                <img src="Ghost.png" alt="Ghost">
+                <p>Ghost: Co Developer<br>
+                Ghost is an amazing developer with advanced skills in building, audio, and images. He contributes significantly to EGWMIADG.</p>
+            </div>
+            <div class="developer">
+                <img src="czctus.png" alt="czctus">
+                <p>czctus: Lead Developer/Founder Of Rocket<br>
+                Czctus is the lead developer and founder of perox.dev and Rocket. He has diverse skills in building and scripting.</p>
+                <p><a href="https://perox.dev/@czctus">Perox Profile</a> | <a href="https://github.com/czctus">Github Profile</a> | <a href="https://youtube.com/@czctus1">YouTube Profile</a></p>
+            </div>
+        </div>
+        
+        <div class="extra-work">
+            <h2>Extra Work</h2>
+            <img src="guy.png" alt="An image by Ghost">
+            <img src="guy2.png" alt="An image by Ghost">
+            <img src="guy3.png" alt="An image by Ghost">
+        </div>
 
-<center style="color: wheat;"> <p style="font-size: x-large;" id="czctus">czctus: Lead Developer/Founder Of Rocket</p><br><br>
-    <center><img src="czctus.png"></center><br>
-    Czctus is the Lead Developer and Founder of <a href="perox.dev">perox.dev</a> and Rocket.<br>
-    Czctus has a diverse skillset and is quite advanced despite its breadth.<br><br> 
-    Skillset List Below<br>
-    - Building: Czctus builds a lot of the assets, and the results are impressive.<br>
-    - Scripting: Czctus has been coding since 2020 and has significantly improved over time, specializing in Lua, Html, and JavaScript.<br><br><br>
-    <i>"i create" - czctus</i><br><br> 
-    <a href="https://perox.dev/@czctus">Perox Profile</a><br>
-    <a href="https://github.com/czctus">Github Profile</a><br>
-    <a href="https://youtube.com/@czctus1">YouTube Profile</a>
-</center><br><br><br>
-    
-<center style="color: wheat; font-size:xx-large">   Extra Work    </center><br>
-<br><center><img src="guy.png" alt="An image by Ghost"><br><i style="color: lightblue; font-size: small;">(An image by Ghost)</i></center>
-<br><center><img src="guy2.png" alt="An image by Ghost"><br><i style="color: lightblue; font-size: small;">(An image by Ghost)</i></center>
-<br><center><img src="guy3.png" alt="An image by Ghost"><br><i style="color: lightblue; font-size: small;">(An image by Ghost)</i></center>
-
-<br><br><br><center style="color: wheat; font-size: smaller;"><b>Created by Rocket's Parent Brand perox.dev</b></center>
+        <div class="footer">Created by Rocket's Parent Brand perox.dev</div>
+    </div>
 </body>
 </html>
