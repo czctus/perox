@@ -4,14 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Better font */
+            background-color: #1f1f1f; /* Dark mode background */
+            color: #ffffff; /* Light text color */
+            text-align: center; /* Center align content */
+        }
+        h1 {
+            font-size: 2em; 
+            margin-bottom: 20px; 
+        }
+        form {
+            margin: 0 auto; 
+            max-width: 400px; 
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="file"],
+        input[type="text"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ffffff;
+            background-color: transparent;
+            color: #ffffff; 
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #008cba; 
+            cursor: pointer; 
+            transition: background-color 0.3s ease; 
+        }
+        input[type="submit"]:hover {
+            background-color: #005f7f;
+        }
+    </style>
 </head>
 <body>
     <h1>File Converter</h1>
     <form id="conversionForm" enctype="multipart/form-data" action="https://api.perox.dev/convert/" method="post">
-        <label for="fileInput">Choose a file:</label><br>
-        <input type="file" id="fileInput" name="file"><br><br>
-        <label for="convertType">Convert to:</label><br>
-        <input type="text" id="convertType" name="type" placeholder="Enter file type (e.g., png, gif)" required><br><br>
+        <label for="fileInput">Choose a file:</label>
+        <input type="file" id="fileInput" name="file">
+        <label for="convertType">Convert to:</label>
+        <input type="text" id="convertType" name="type" placeholder="Enter file type (e.g., png, gif)" required>
         <input type="submit" value="Convert">
     </form>
 
