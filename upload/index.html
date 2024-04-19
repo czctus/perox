@@ -1,25 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <style>
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #008cba;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #005f7f;
+        }
+
         body {
-            font-family: Arial, sans-serif; /* Better font */
-            background-color: #1f1f1f; /* Dark mode background */
-            color: #ffffff; /* Light text color */
-            text-align: center; /* Center align content */
+            font-family: Arial, sans-serif;
+            background-color: #1f1f1f;
+            color: #ffffff;
+            text-align: center;
         }
+
+        #SideBar {
+            width: 150px;
+            height: 100vh;
+
+            background-color: #292929;
+            color: #ffffff;
+
+            padding: 20px;
+            margin: 0;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+
+            /* position the sidebar */
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        #LocalFiles {
+            width: 300px;
+            height: auto;
+
+            background-color: #292929;
+            color: #ffffff;
+
+            padding: 1px;
+            margin: 0;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        #LocalFiles a {
+            font-size: 0.8em;
+        }
+
+        #SideBar p {
+            font-size: 1em;
+            text-align: left;
+        }
+
+        #BottomText {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            font-size: 1em;
+            text-align: center;
+        }
+
         h1 {
-            font-size: 2em; 
-            margin-bottom: 20px; 
+            font-size: 2em;
+            margin-bottom: 20px;
         }
+
         form {
-            margin: 0 auto; 
-            max-width: 400px; 
+            margin: 0 auto;
+            max-width: 400px;
         }
+
         label {
             display: block;
             margin-bottom: 10px;
         }
+
+        a {
+            color: #008cba;
+            text-decoration: none;
+        }
+
         input[type="file"],
         input[type="text"],
         input[type="submit"] {
@@ -28,18 +96,21 @@
             margin-bottom: 15px;
             border: 1px solid #ffffff;
             background-color: transparent;
-            color: #ffffff; 
+            color: #ffffff;
             border-radius: 5px;
             box-sizing: border-box;
         }
+
         input[type="submit"] {
-            background-color: #008cba; 
-            cursor: pointer; 
-            transition: background-color 0.3s ease; 
+            background-color: #008cba;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
+
         input[type="submit"]:hover {
             background-color: #005f7f;
         }
+
         /* Disable button when loading */
         input[type="submit"]:disabled {
             background-color: #333333;
@@ -50,22 +121,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Uploader</title>
 </head>
+
 <body>
     <h1>File Uploader</h1>
     <form id="uploadForm" enctype="multipart/form-data" action="https://api.perox.dev/content" method="post">
         <label for="fileInput">Choose a file:</label><br>
         <input type="file" id="fileInput" name="image" required><br><br>
         <input type="submit" id="uploadButton" value="Upload">
-        <br>
-        <p id="servedfiles">Serving x Files</p>
-        <br>
-        <br>
-        <p>Please view our TOS before you use our services!</p>
-        <p><a style="color: #008cba;" href="https://perox.dev/upload/tos">You can read the TOS here.</a></p>
     </form>
 
+    <br>
+    <p id="servedfiles">Serving x Files</p>
+    <br>
+    <br>
+    <p>Please view our TOS before you use our services!</p>
+    <p><a style="color: #008cba;" href="https://perox.dev/upload/tos">You can read the TOS here.</a></p>
+
+    <center>
+        <br>
+        <div id="LocalFiles">
+            <p>Uploads</p>
+        </div>
+    </center>
+
+    <div id="SideBar">
+        <p>Extra</p>
+        <br>
+        <p><a href="https://perox.dev/convert">File Converter</a></p>
+        <p><a href="https://perox.dev/upload/tos">Terms Of Service</a></p>
+        <p><a href="https://perox.dev/upload/remove" style="display: none;">Remove File</a></p>
+    </div>
+
     <script>
-        document.getElementById("uploadForm").addEventListener("submit", function(event) {
+        document.getElementById("uploadForm").addEventListener("submit", function (event) {
             event.preventDefault(); // prevent the default form submission
 
             const form = event.target;
@@ -77,24 +165,31 @@
                 method: "POST",
                 body: formData
             })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error("Upload failed.");
-                }
-            })
-            .then(data => {
-                console.log(data); 
-                window.location.href = data.url;
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert("Upload failed. Please try again.");
-            })
-            .finally(() => {
-                document.getElementById("uploadButton").disabled = false;
-            });
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("Upload failed.");
+                    }
+                })
+                .then(data => {
+                    console.log(data);
+                    window.location.href = data.url;
+                    let uploadedUrls = JSON.parse(localStorage.getItem('uploadedUrls')) || [];
+
+                    uploadedUrls.push(data.url);
+
+                    localStorage.setItem('uploadedUrls', JSON.stringify(uploadedUrls));
+
+                    document.getElementById("LocalFiles").innerHTML = uploadedUrls.map(url => `<a href="${url}">${url}</a>`).join('<br>');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("Upload failed. Please try again.");
+                })
+                .finally(() => {
+                    document.getElementById("uploadButton").disabled = false;
+                });
         });
 
         fetch("https://api.perox.dev/statistic/fileinf")
@@ -103,6 +198,12 @@
                 document.getElementById("servedfiles").textContent = `Serving ${data.data} Files`;
             })
             .catch(error => console.error('Error fetching served files:', error));
+
+        window.onload = function () {
+            const uploadedUrls = JSON.parse(localStorage.getItem('uploadedUrls')) || [];
+            document.getElementById("LocalFiles").innerHTML = uploadedUrls.map(url => `<a href="${url}">${url}</a>`).join('<br>');
+        }
     </script>
 </body>
+
 </html>
