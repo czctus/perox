@@ -96,7 +96,7 @@
         fetch("https://api.perox.dev/statistic/fileinf")
             .then(response => response.json())
             .then(data => {
-                document.getElementById("servedfiles").textContent = `Serving ${data.data.length} Files`;
+                document.getElementById("servedfiles").textContent = `Serving ${data.data} Files`;
             })
             .catch(error => console.error('Error fetching served files:', error));
     </script>
