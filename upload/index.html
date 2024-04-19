@@ -40,6 +40,11 @@
         input[type="submit"]:hover {
             background-color: #005f7f;
         }
+        /* Disable button when loading */
+        input[type="submit"]:disabled {
+            background-color: #333333;
+            cursor: not-allowed;
+        }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,8 +55,9 @@
     <form id="uploadForm" enctype="multipart/form-data" action="https://api.perox.dev/content" method="post">
         <label for="fileInput">Choose a file:</label><br>
         <input type="file" id="fileInput" name="image" required><br><br>
-        <input type="submit" value="Upload">
-        <p>Please dont spam submit! It may take a bit to upload.</p>
+        <input type="submit" id="uploadButton" value="Upload">
+        <br>
+        <p id="servedfiles">Serving x Files</p>
     </form>
 
     <script>
@@ -60,6 +66,8 @@
 
             const form = event.target;
             const formData = new FormData(form);
+
+            document.getElementById("uploadButton").disabled = true;
 
             fetch(form.action, {
                 method: "POST",
@@ -79,8 +87,18 @@
             .catch(error => {
                 console.error('Error:', error);
                 alert("Upload failed. Please try again.");
+            })
+            .finally(() => {
+                document.getElementById("uploadButton").disabled = false;
             });
         });
+
+        fetch("https://api.perox.dev/statistic/fileinf")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("servedfiles").textContent = `Serving ${data.data.length} Files`;
+            })
+            .catch(error => console.error('Error fetching served files:', error));
     </script>
 </body>
 </html>
