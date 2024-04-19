@@ -88,6 +88,17 @@
             text-decoration: none;
         }
 
+        #ClearUploads {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ffffff;
+            background-color: #e23326;
+            color: #ffffff;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
         input[type="file"],
         input[type="text"],
         input[type="submit"] {
@@ -138,6 +149,8 @@
         <div id="LocalFiles">
             <p>Uploads</p>
         </div>
+        <br>
+        <button id="ClearUploads">Clear Uploads</button>
     </center>
     <p>Please view our TOS before you use our services!</p>
     <p><a style="color: #008cba;" href="https://perox.dev/upload/tos">You can read the TOS here.</a></p>
@@ -200,6 +213,17 @@
         window.onload = function () {
             const uploadedUrls = JSON.parse(localStorage.getItem('uploadedUrls')) || [];
             document.getElementById("LocalFiles").innerHTML = uploadedUrls.map(url => `<a href="${url}">${url}</a>`).join('<br>');
+            const numberOfUploads = document.getElementById('LocalFiles').querySelectorAll("*").length;
+            if (numberOfUploads > 0) {
+                document.getElementById('ClearUploads').style.display = "block";
+            } else {
+                document.getElementById('ClearUploads').style.display = "none";
+            }
+        }
+
+        document.getElementById('ClearUploads').onclick = function() {
+            localStorage.removeItem('uploadedUrls')
+            location.reload()
         }
     </script>
 </body>
