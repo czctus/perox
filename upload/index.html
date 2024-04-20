@@ -16,7 +16,8 @@
         }
 
         @media (max-width: 768px) {
-            /* Hide the sidebar on screens smaller than 768px */
+
+            /* hide side bar on mobile as it blocks the file uploader */
             #SideBar {
                 display: none;
             }
@@ -141,11 +142,11 @@
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Uploader</title>
-    <meta content="File Uploader" property="og:title"/>
-    <meta content="Free File Uploader hosted on Perox.dev" property="og:description"/>
+    <title>File Uploader | Perox.dev</title>
+    <meta content="File Uploader" property="og:title" />
+    <meta content="Free File Uploader hosted on Perox.dev" property="og:description" />
     <meta content="#008cba" data-react-helmet="true" name="theme-color" />
-    <meta name="description" content="Free File Uploader hosted on Perox.dev">
+    <meta name="description" content="Perox.dev offers the best file uploader service for free. Easily upload and share your files securely with our fast and reliable hosting platform.">
     <meta name="keywords" content="file uploader, upload files, Perox.dev, file sharing, cloud, free uploader">
 </head>
 
@@ -221,12 +222,18 @@
                 });
         });
 
-        fetch("https://api.perox.dev/statistic/fileinf")
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("servedfiles").textContent = `Serving ${data.data} Files`;
-            })
-            .catch(error => console.error('Error fetching served files:', error));
+        //?sm=1 allows for not needed content (i.e servedFiles, sidebar, js)
+        if (window.location.search.indexOf("sm=1") === -1) {
+            fetch("https://api.perox.dev/statistic/fileinf")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("servedfiles").textContent = `Serving ${data.data} Files`;
+                })
+                .catch(error => console.error('Error fetching served files:', error));
+        } else {
+            document.getElementById("servedfiles").style.display = "none";
+            document.getElementById("SideBar").style.display = "none";
+        };
 
         window.onload = function () {
             const uploadedUrls = JSON.parse(localStorage.getItem('uploadedUrls')) || [];
@@ -236,10 +243,11 @@
                 document.getElementById('ClearUploads').style.display = "block";
             } else {
                 document.getElementById('ClearUploads').style.display = "none";
+                document.getElementById('')
             }
         }
 
-        document.getElementById('ClearUploads').onclick = function() {
+        document.getElementById('ClearUploads').onclick = function () {
             localStorage.removeItem('uploadedUrls')
             location.reload()
         }
