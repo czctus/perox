@@ -191,16 +191,18 @@
                     body: jsonInput
                 });
                 if (response.ok) {
-                    const responseData = await response.text();
-                    document.getElementById('response').value = `${responseData}`;
+                    const responseData = await response.json();
+                    document.getElementById('response').innerText = JSON.stringify(responseData, null, 2);
                 } else {
-                    console.error('Error:', response.status);
+                    const errorData = await response.json();
+                    document.getElementById('response').innerText = JSON.stringify(errorData, null, 2);
                 }
             } catch (error) {
                 console.error('Error:', error);
             }
         }
     </script>
+
 
 </body>
 
