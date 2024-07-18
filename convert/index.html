@@ -3,8 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Converter</title>
+    <title>File Converter | Perox.dev</title>
     <style>
+        #SideBar {
+            width: 150px;
+            height: 100vh;
+
+            background-color: #292929;
+            color: #ffffff;
+
+            padding: 20px;
+            margin: 0;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        #SideBar p {
+            font-size: 1em;
+            text-align: left;
+        }
         body {
             font-family: Arial, sans-serif; /* Better font */
             background-color: #1f1f1f; /* Dark mode background */
@@ -22,6 +40,10 @@
         label {
             display: block;
             margin-bottom: 10px;
+        }
+        a {
+            color: #008cba;
+            text-decoration: none;
         }
         input[type="file"],
         input[type="text"],
@@ -54,6 +76,21 @@
         <input type="text" id="convertType" name="type" placeholder="Enter file type (e.g., png, gif)" required>
         <input type="submit" value="Convert">
     </form>
+    <p>Please view our TOS before you use our services!</p>
+    <p><a style="color: #008cba;" href="../upload/tos">You can read the TOS here.</a></p>
+    <br>
+    <p>Note, Your conversions may fail!</p>
+    <p>We are trying to improve our code to prevent failures.</p>
+
+    <div id="SideBar">
+        <p>Extra</p>
+        <br>
+        <p><a href="../upload">File Uploader</a></p>
+        <p><a href="../upload/tos">Terms Of Service</a></p>
+        <p><a href="../upload/remove" style="display: none;">Remove File</a></p>
+        <p><a href="https://discord.gg/tq9vQfH9Au">Join our Discord!</a></p>
+        <p><a href="https://twitter.com/rocket_studioz">Check out our twitter</a></p>
+    </div>
 
     <script>
         document.getElementById("conversionForm").addEventListener("submit", function(event) {
@@ -84,9 +121,10 @@
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert("Conversion failed. Please try again.");
+                alert("Conversion failed. Please try again later!");
             });
         });
     </script>
+    <noscript>JavaScript is required for this site to function!</noscript>
 </body>
 </html>

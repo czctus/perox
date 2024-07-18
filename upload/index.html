@@ -16,8 +16,6 @@
         }
 
         @media (max-width: 768px) {
-
-            /* hide side bar on mobile as it blocks the file uploader */
             #SideBar {
                 display: none;
             }
@@ -40,8 +38,6 @@
             padding: 20px;
             margin: 0;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-
-            /* position the sidebar */
             position: fixed;
             top: 0;
             left: 0;
@@ -134,7 +130,6 @@
             background-color: #005f7f;
         }
 
-        /* Disable button when loading */
         input[type="submit"]:disabled {
             background-color: #333333;
             cursor: not-allowed;
@@ -175,16 +170,16 @@
     <div id="SideBar">
         <p>Extra</p>
         <br>
-        <p><a href="https://perox.dev/convert">File Converter</a></p>
-        <p><a href="https://perox.dev/upload/tos">Terms Of Service</a></p>
-        <p><a href="https://perox.dev/upload/remove" style="display: none;">Remove File</a></p>
+        <p><a href="../convert/">File Converter</a></p>
+        <p><a href="../upload/tos">Terms Of Service</a></p>
+        <p><a href="../upload/remove" style="display: none;">Remove File</a></p>
         <p><a href="https://discord.gg/tq9vQfH9Au">Join our Discord!</a></p>
         <p><a href="https://twitter.com/rocket_studioz">Check out our twitter</a></p>
     </div>
 
     <script>
         document.getElementById("uploadForm").addEventListener("submit", function (event) {
-            event.preventDefault(); // prevent the default form submission
+            event.preventDefault();
 
             const form = event.target;
             const formData = new FormData(form);
@@ -252,6 +247,7 @@
             location.reload()
         }
     </script>
+    <noscript>JavaScript is required for this site to function!</noscript>
 </body>
 
 </html>
